@@ -1,0 +1,28 @@
+use("platzi_store")
+
+db.iot.updateOne({
+    sensor: "A001", //A simle way for insert (create) the firs register or update it if has second or subsequents reads
+    date: "2022-01-03",
+},
+{$push:
+    {
+        readings: 2056
+    }
+},
+{
+    upsert: true
+})
+
+
+db.iot.updateOne({
+    sensor: "A001", //A simle way for insert (create) the firs register or update it if has second or subsequents reads
+    date: "2022-01-03",
+},
+{$push:
+    {
+        readings: 3051
+    }
+},
+{
+    upsert: true
+})

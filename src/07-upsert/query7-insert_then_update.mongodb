@@ -1,0 +1,35 @@
+use("platzi_store")
+
+db.iot.insertOne({
+    sensor: "A001", //one document per date for same sensor
+    date: "2022-01-01",
+    readings: [1212]
+})
+
+db.iot.insertOne({
+    sensor: "A001", //one document is created for the first read of the day
+    date: "2022-01-03",
+    readings: [1212]
+})
+
+db.iot.updateOne({
+    sensor: "A001", //what adjust doing for second and subsequents reads?
+    date: "2022-01-03",
+},
+{$push:
+    {
+        readings: 2056
+    }
+
+})
+
+db.iot.updateOne({
+    _id: 3
+},
+{$pop:
+    {
+        readings: 1 //remove the last element / -1: remove the firs element
+    }
+
+},
+)
