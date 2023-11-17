@@ -6,3 +6,4 @@ db.inventory.insertMany([
     {_id:3, item:{name: "item de", code:"456", description: "Many spaces before    line" }, qty: 25, tags: ["appliance", "school"]},
     {_id:4, item:{name: "item fg", code:"567", description: "MUltiple\nline description" }, qty: 32, tags: ["electronics", "school"]},
 ])
+// Cursor at end of query

@@ -25,3 +25,4 @@ db.inventory.updateMany(
         }
     }
 ) //>>matchedCount: 4 / modifiedCount: 4
+// Cursor at end of query

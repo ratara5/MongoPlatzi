@@ -1,0 +1,11 @@
+use("platzi_store")
+
+db.products.deleteOne({
+    _id: 1 //or _id : ObjectId(####) if is the case
+})
+// Cursor at end of query
+
+db.products.deleteMany({
+    price: 100
+})
+// Cursor at end of query

@@ -8,3 +8,4 @@ db.inventory.updateOne(
         }
     }
 ) //>>modifiedCount: 1
+// Cursor at end of query

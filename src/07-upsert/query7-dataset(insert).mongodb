@@ -10,3 +10,4 @@ db.iot.insertMany([
 ])
 
 db.iot.find()
+// Cursor at end of query

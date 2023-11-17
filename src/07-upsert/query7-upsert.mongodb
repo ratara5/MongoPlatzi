@@ -26,3 +26,4 @@ db.iot.updateOne({
 {
     upsert: true
 })
+// Cursor at end of query

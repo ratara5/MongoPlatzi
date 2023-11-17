@@ -34,3 +34,4 @@ db.products.insertMany([
 }],
 {ordered: false}
 )
+// Cursor at end of query
