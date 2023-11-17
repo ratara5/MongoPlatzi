@@ -1,0 +1,8 @@
+use("platzi_store")
+
+db.inventory.insertMany([
+    {_id:1, item:{name: "item ab", code:"123", description: "Single line description" }, qty: 15, tags: ["school", "book", "bag", "headphones" ]},
+    {_id:2, item:{name: "item cd", code:"123", description: "First line\nSecond Line" }, qty: 20, tags: ["appliance", "school", "book"]},
+    {_id:3, item:{name: "item de", code:"456", description: "Many spaces before    line" }, qty: 25, tags: ["appliance", "school"]},
+    {_id:4, item:{name: "item fg", code:"567", description: "MUltiple\nline description" }, qty: 32, tags: ["electronics", "school"]},
+])

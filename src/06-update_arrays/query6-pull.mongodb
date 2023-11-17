@@ -1,0 +1,27 @@
+use("platzi_store")
+
+//Remove one element from array
+db.inventory.updateMany(
+    //query: all entries
+    {},
+    //change array => with operator
+    {$pull:
+        {
+            tags: "book"
+        }
+    }
+) //>>matchedCount: 5 / modifiedCount: 1
+
+//Remove others elements from array
+db.inventory.updateMany(
+    //query: all entries
+    {},
+    //change array => with operator
+    {$pull:
+        {
+            tags: {
+                $in: ["school", "appliance"]   
+            }
+        }
+    }
+) //>>matchedCount: 4 / modifiedCount: 4
