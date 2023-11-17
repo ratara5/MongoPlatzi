@@ -1,0 +1,58 @@
+use("platzi_store")
+
+//using $lte
+db.inventory.find({
+    qty:
+    {
+        $lte: 20 //Less than or equal <=
+    }
+})
+
+//using $gte
+db.inventory.updateMany({
+    qty:
+    {
+        $gt: 15 //Greater than >
+    }
+},
+{
+    $push:
+    {
+        tags : "Greater than 15"
+    }
+}
+)
+
+//using join $gte & $lte
+db.inventory.updateMany({
+    qty:
+    {
+        $gte: 15,
+        $lte: 35
+    }
+},
+{
+    $push:
+    {
+        tags : "Greater than 15 but less than or equal 15"
+    }
+}
+)
+
+//using join $gte & $lte
+db.inventory.updateMany(
+    {
+        "item.name": {
+            $ne: "ab"
+        },
+        qty: {
+            $gte: 15,
+            $lte: 35
+        }
+    },
+    {
+        $push: {
+            tags : "Greater than 15 but less than or equal 15, and item.name not equal 'ab'"
+        }
+    }
+)

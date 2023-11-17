@@ -1,0 +1,22 @@
+use("platzi_store")
+
+//using $eq
+db.inventory.find({
+    qty:
+    {
+        $eq: 20 //This operator already exist implicitly
+    }
+})
+
+//search for subdocument
+db.inventory.find({
+    "item.code": "123"
+})
+
+//using $ne
+db.inventory.find({
+    qty:
+    {
+        $ne: 20
+    }
+})

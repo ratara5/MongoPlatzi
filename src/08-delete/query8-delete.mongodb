@@ -9,3 +9,5 @@ db.products.deleteMany({
     price: 100
 })
 // Cursor at end of query
+
+db.products.drop()
