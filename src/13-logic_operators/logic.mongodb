@@ -1,0 +1,47 @@
+use("sample_training")
+
+
+// This is already a AND (implicit)
+db.inspections.find({
+    sector: "Tax Preparers - 891",
+    result: "Unable to Locate"
+}).count()
+
+// $and: AND (explicit)
+db.inspections.find({
+    $and:[
+        {sector: "Tax Preparers - 891"},
+        {result: "Unable to Locate"}
+    ]
+}).count()
+
+// $or: OR (explicit, EVER DO IT!)
+db.inspections.find({
+    $or:[
+        {sector: "Tax Preparers - 891"},
+        {result: "Unable to Locate"}
+    ]
+}).count() // more documents than using $and
+
+// $or: OR (explicit, EVER DO IT!)
+db.inspections.find({
+    $nor:[
+        {sector: "Tax Preparers - 891"},
+        {result: "Unable to Locate"}
+    ]
+}, {
+    result: 1,
+    _id: 0
+}).count() // more documents than using $and
+
+// $not, doesn't receive array, is applied over specific field
+db.inspections.find({
+    result: {
+        $not: {$regex: /Unable to Locate/}
+    }
+})
+
+
+
+
+

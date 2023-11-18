@@ -1,0 +1,37 @@
+use("platzi_store")
+
+
+/// work in arrays or within document (search values in one field)
+// $in: elements within 
+
+db.inventory.find({qty:{$in:[20,25]}}) //20 OR 25
+db.inventory.find({tags:{$in: ["bag", "electronics"]}}) // "bag" OR "electronics"
+
+// $nin
+db.inventory.find({qty:{$nin:[20,25]}}) //20 OR 25
+db.inventory.find({tags:{$nin: ["bag", "electronics"]}}) // "bag" OR "electronics"
+
+// whitout operator
+db.inventory.find({tags:["school","book"]}) //return array that acomplished EXACTLY with tags: ["school", "book"] IN THAT ORDER!
+db.inventory.find({tags:["book","school"]}) //return array that acomplished EXACTLY with tags: ["book", "school"] IN THAT ORDER!
+
+
+/// work only in arrays
+// $all
+db.inventory.find({tags: {$all: ["book", "school"]}}) //"book" AND "school". ORDER IS NOT IMPORTANT
+// $in is OR, $all is AND
+
+// $size
+db.inventory.find({tags:{$size:2}}) //documents which field array tags has length equal 2
+
+// $elemMatch
+db.survey.find({results:{$elemMatch: {product:"xyz"}}}) //documents wich field array result has object which attributte product has coincidence with "xyz"
+
+db.survey.find({
+    results:{
+        $elemMatch: {
+            product:"xyz", 
+            score: {$gte: 7}
+        }
+    }
+}) //documents wich array result has object which attributte product has coincidence with "xyz" and attributte score greater than or equal 7

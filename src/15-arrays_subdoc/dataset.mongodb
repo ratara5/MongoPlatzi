@@ -1,0 +1,2 @@
+use("sample_training")
+db.trips.find();

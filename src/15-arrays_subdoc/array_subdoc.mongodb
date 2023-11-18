@@ -1,0 +1,25 @@
+use("sample_training")
+
+//db.trips.findOne({"start station location.type": "Point"});
+
+db.companies.find({
+    "relationships.0.person.last_name": "Zuckerberg"
+},{
+    name: 1, _id: 0
+}) //relationships.0 -> Access to first element of array relationships*, that element is an object (We can call it relationship). Then access at the attributte person, which is an object too, finally access at the attributte last_name. The second argument of find is projection.
+// * IN the first element of array relationships ever is the CEO Of a company.
+
+db.companies.find({
+    "relationships.0.person.first_name": "Mark"
+},{
+    name: 1, _id: 0
+}).count() //How many companies' boss named Mark >> 108
+
+db.companies.find({
+    relationships:{
+        $elemMatch: {
+            "person.first_name": "Mark"
+       }
+    }
+}).count() //How many companies' important persons named Mark >> 523
+

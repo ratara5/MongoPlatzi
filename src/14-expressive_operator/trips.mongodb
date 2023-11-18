@@ -1,0 +1,29 @@
+use("sample_training")
+
+db.trips.find({
+    $expr:{
+        $eq: ["$start station id", "$end station id"]
+    }
+}).count() // count trips started and ended in the same point
+
+
+db.trips.find({
+    $and:[
+        {tripduration: {$gte: 600}},
+        {
+            $expr:{
+            $eq: ["$start station id", "$end station id"]
+            }
+        }
+    ]
+}).count() // count trips started and ended in the same point, also their time duration is ...
+
+
+db.trips.find({
+    $expr:{
+        $and: [
+            {$eq: ["$start station id", "$end station id"]},
+            {$gte: ["$tripduration", 600]}      
+        ]
+    }
+}).count() // OTHER WAY: count trips started and ended in the same point, also their time duration is ...

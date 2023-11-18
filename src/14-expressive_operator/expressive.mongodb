@@ -1,0 +1,18 @@
+use("platzi_store")
+
+//without...
+db.monthlyBudget.find({spent:{$gt: 100}})
+
+//with expressive operator
+db.monthlyBudget.find({
+    $expr:{
+        $gte:["$spent", 100] //operator for select specific field
+    }
+})
+
+//with expressive operator
+db.monthlyBudget.find({
+    $expr:{
+        $gte:["$spent", "$budget"] //operator for select specifics fields, the power of $expr is in that allow compare values between fields
+    }
+})

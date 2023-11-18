@@ -1,0 +1,20 @@
+use("sample_training")
+
+db.routes.find().count()
+
+db.routes.find({
+    $or:[
+        {dst_airport: "BOG"},
+        {src_airport: "BOG"}
+    ]
+}).count() //flights has Bogotá as departure or destiny
+
+db.routes.find({
+    $and:[
+        {airplane: "E70"},
+        {$or:[
+            {dst_airport: "BOG"},
+            {src_airport: "BOG"}
+        ]}
+    ]
+}).count() //flights has Bogotá as departure OR destiny, AND airplane is E70
