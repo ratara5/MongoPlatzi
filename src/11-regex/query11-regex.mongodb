@@ -1,0 +1,35 @@
+use("platzi_store")
+
+//documents contain "line" in item.description
+db.inventory.find(
+    {"item.description":
+        {$regex: /LINE/i} //equivalent /line/. i means case insensitive
+    }
+)
+
+//documents end in "line" in item.description
+db.inventory.find(
+    {"item.description":
+        {$regex: /line$/}
+    }
+)
+
+//documents start with "M" or "m" in item.description
+db.inventory.find(
+    {"item.description":
+        {$regex: /^M/i}
+    }
+)
+
+//documents in any line starts with "S" or "s" in item.description
+db.inventory.find(
+    {
+        "item.description":
+            {$regex: /^S/im}, //m means multiline
+        qty: 
+            {$gt: 15}
+    },
+    {
+        tags: 1, _id: 0
+    }
+) //The second parameter in find() is the projection (the fields to show), only is neccesary hidde the _id, the another fields are hidden by default if the parameter projection is used.
