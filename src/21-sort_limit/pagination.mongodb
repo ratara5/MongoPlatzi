@@ -1,0 +1,39 @@
+use("platzi_store")
+
+//First page with 2 documents
+db.categories
+    .find()
+    .skip(0)
+    .limit(2)
+
+//Second page with 2 documents
+db.categories
+    .find()
+    .skip(2)
+    .limit(2)
+
+
+
+//First page with 3 documents
+db.categories
+    .find()
+    .skip(0)
+    .limit(3)
+
+//Second page with 3 documents
+db.categories
+    .find()
+    .skip(3)
+    .limit(3)
+
+//Third page with 3 documents
+db.categories
+    .find()
+    .skip(6)
+    .limit(3)
+
+//Third page with 3 documents
+db.categories
+    .find()
+    .skip(9)
+    .limit(3) // >> only shows the document 10th, because there is no more

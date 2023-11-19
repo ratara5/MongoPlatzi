@@ -1,0 +1,6 @@
+use("sample_training")
+
+// 1 = asc ; -1 = desc
+db.zips.find({ pop: {$gte: 100 }}, {pop: 1})
+        .sort({pop: -1})
+        .limit(2)

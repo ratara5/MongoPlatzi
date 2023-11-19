@@ -22,4 +22,3 @@ db.companies.find({
        }
     }
 }).count() //How many companies' important persons named Mark >> 523
-
